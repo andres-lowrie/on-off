@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>On-Off</title>
+    <style type="text/css" media="screen">
+      .center {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        text-align: center;
+        font-size: 1.5em;
+      }
+    </style>
+    <script charset="utf-8" src="/index.js"></script>
+  </head>
+  <body>
+    <div class="center">
+      <label for="on">ON TIME</label>
+      <select name="on" id="on" multiple size="1">
+        <option value="1">1 min</option>
+        <option value="2">2 min</option>
+        <option value="3">3 min</option>
+        <option value="4">4 min</option>
+        <option value="5">5 min</option>
+      </select>
+      <br/>
+      <br/>
+
+      <label for="off">OFF TIME</label>
+      <select name="off" id="off" multiple size="1">
+        <option value="1">1 min</option>
+        <option value="2">2 min</option>
+        <option value="3">3 min</option>
+        <option value="4">4 min</option>
+        <option value="5">5 min</option>
+      </select>
+      <br/>
+      <br/>
+      <button onclick="start()">Start</button>
+    </div>
+  </body>
+</html>
