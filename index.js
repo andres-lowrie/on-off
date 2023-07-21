@@ -1,18 +1,24 @@
-const onTime = 5000
-const offTime = 10000
+let onTime = 5000
+let offTime = 10000
+function setOnTime (v) {
+  onTime = v.value * 1000 * 60
+}
+
+function setOffTime (v) {
+  offTime = v.value * 1000 * 60
+}
+
+function speak (text) {
+  window.speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+}
 
 let isOn = false
 let isOff = false
-
-let doingOnMessage = false
-let doingOffMessage = false
-
 function loop () {
   if (isOn) {
     console.log('start ON')
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance('ON'))
+    speak('ON')
     setTimeout(() => {
-      console.log('end of ON')
       isOff = true
     }, onTime)
     isOn = false
@@ -20,9 +26,8 @@ function loop () {
 
   if (isOff) {
     console.log('start OFF')
-    window.speechSynthesis.speak(new SpeechSynthesisUtterance('OFF'))
+    speak('OFF')
     setTimeout(() => {
-      console.log('end of OFF')
       isOn = true
     }, offTime)
     isOff = false
@@ -36,5 +41,16 @@ function start () {
   loop()
 }
 
-console.log('Start')
 window.speechSynthesis.cancel()
+
+window.onload = () => {
+  const onEl = document.querySelector('#on')
+  onEl.addEventListener('change', (e) => setOnTime(e.target))
+
+  const offEl = document.querySelector('#off')
+  offEl.addEventListener('change', (e) => setOffTime(e.target))
+
+  // initialize
+  setOnTime(onEl.children[0])
+  setOffTime(offEl.children[0])
+}
