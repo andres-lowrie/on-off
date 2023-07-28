@@ -38,7 +38,14 @@ function loop () {
 
 function start () {
   isOn = true
+  document.querySelector('#id').innerHtml9
   loop()
+}
+
+function stop(){
+  speak("Stopping")
+  isOn = false
+  isOff = false
 }
 
 window.speechSynthesis.cancel()
